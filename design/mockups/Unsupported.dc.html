@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lectern unsupported browser</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/lectern/tokens.css">
+<link rel="stylesheet" href="ds/lectern/components/bundle.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div data-theme="dark" style="min-height: 760px; background: var(--paper); color: var(--ink); font-family: var(--font-sans); display: flex; flex-direction: column;">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-alert" viewBox="0 0 16 16"><path d="M8 2.5l6 10.5H2z"/><path d="M8 7v3M8 11.8v.01"/></symbol>
+<symbol id="i-copy" viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="1"/><path d="M3 10.5V3.5a1 1 0 0 1 1-1h6.5"/></symbol>
+</defs></svg>
+
+<header style="display: flex; align-items: center; gap: 10px; padding: 16px 24px;">
+<svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true" style="color: var(--accent); fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M7.1 20.7 L9 28 L55 14"/><path d="M32.9 20.5 V51"/><path d="M21 52 H44.8"/></svg>
+<span style="font: 600 20px/24px var(--font-serif);">Lectern</span>
+</header>
+
+<main style="flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px 96px;">
+<section style="width: 100%; max-width: 540px;">
+<div class="lc-notice lc-notice--danger" role="note" style="margin-bottom: 24px;"><p class="lc-notice__head"><svg class="lc-ic" aria-hidden="true"><use href="#i-alert"/></svg>Unsupported browser</p><p>This browser can't open local folders yet. Use Chrome or Edge.</p></div>
+<h1 style="font: 600 34px/40px var(--font-serif); margin: 0 0 16px;">Lectern needs to read a folder on your computer</h1>
+<p style="font: 400 17px/28px var(--font-serif); margin: 0 0 16px;">It does this with a browser feature that Chrome and Edge provide. Without it, Lectern cannot show the documentation in a folder. Nothing is uploaded, and your files are never changed.</p>
+<p style="font: 400 17px/28px var(--font-serif); margin: 0 0 24px; color: var(--ink-muted);">Open this page in Chrome or Edge to continue.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<button class="lc-btn lc-btn--primary"><svg class="lc-ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy page address</button>
+<a class="lc-btn" href="#">Why only Chrome and Edge?</a>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":760}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

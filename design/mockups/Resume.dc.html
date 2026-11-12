@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lectern resume screen</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/lectern/tokens.css">
+<link rel="stylesheet" href="ds/lectern/components/bundle.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div data-theme="light" style="min-height: 760px; background: var(--paper); color: var(--ink); font-family: var(--font-sans); display: flex; flex-direction: column;">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-alert" viewBox="0 0 16 16"><path d="M8 2.5l6 10.5H2z"/><path d="M8 7v3M8 11.8v.01"/></symbol>
+<symbol id="i-folder" viewBox="0 0 16 16"><path d="M2 4a1 1 0 0 1 1-1h3l1.5 1.5H13a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/></symbol>
+</defs></svg>
+
+<header style="display: flex; align-items: center; gap: 10px; padding: 16px 24px;">
+<svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true" style="color: var(--accent); fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round;"><path d="M7.1 20.7 L9 28 L55 14"/><path d="M32.9 20.5 V51"/><path d="M21 52 H44.8"/></svg>
+<span style="font: 600 20px/24px var(--font-serif);">Lectern</span>
+</header>
+
+<main style="flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 32px 24px 96px;">
+<div class="lc-resume" style="width: 100%; max-width: 460px;">
+<svg class="lc-resume__mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M7.1 20.7 L9 28 L55 14"/><path d="M32.9 20.5 V51"/><path d="M21 52 H44.8"/></svg>
+<h1 class="lc-resume__title" style="margin: 16px 0 4px;">Resume <em style="font-family: var(--font-serif);">docs</em></h1>
+<p class="lc-resume__meta">~/projects/lectern/docs · 128 documents</p>
+<div class="lc-resume__actions">
+<button class="lc-btn lc-btn--primary">Resume</button>
+<button class="lc-btn"><svg class="lc-ic" aria-hidden="true"><use href="#i-folder"/></svg>Open another folder…</button>
+</div>
+<p class="lc-resume__note">Nothing leaves this device.</p>
+</div>
+<div class="lc-notice lc-notice--warn" role="note" style="width: 100%; max-width: 460px;"><p class="lc-notice__head"><svg class="lc-ic" aria-hidden="true"><use href="#i-alert"/></svg>Permission needed</p><p>Lectern needs your permission again to read <code>docs</code>. Your files are not changed.</p></div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":760}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" width="560" height="140" font-family="sans-serif" font-size="14" role="img">
+<title>A folder on your computer is read by Lectern and shown as a site; nothing leaves the device</title>
+<rect x="8" y="40" width="140" height="60" rx="8" fill="#f2ede4" stroke="#8a8279"/><text x="78" y="75" text-anchor="middle" fill="#1e1b18">Your folder</text>
+<rect x="210" y="40" width="140" height="60" rx="8" fill="#e4e9f4" stroke="#2f4b8a"/><text x="280" y="75" text-anchor="middle" fill="#1e1b18">Lectern</text>
+<rect x="412" y="40" width="140" height="60" rx="8" fill="#fffdfa" stroke="#8a8279"/><text x="482" y="75" text-anchor="middle" fill="#1e1b18">Readable site</text>
+<path d="M148 70h56M350 70h56" stroke="#2f4b8a" stroke-width="2"/><path d="M198 64l8 6-8 6M400 64l8 6-8 6" fill="none" stroke="#2f4b8a" stroke-width="2"/>
+<text x="280" y="126" text-anchor="middle" fill="#645d55" font-size="12">read-only · on this device · offline</text>
+</svg>

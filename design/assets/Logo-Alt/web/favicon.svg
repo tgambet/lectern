@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#2F4B8A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<style>@media (prefers-color-scheme: dark) { path { stroke: #8FA8E0 } }</style>
+<title>Lectern</title>
+<path d="M6.8 20.8 L9 28 L55 14"/>
+<path d="M32.9 20.7 V51"/>
+<path d="M21 52 H44.8"/>
+</svg>

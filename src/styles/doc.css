@@ -1,0 +1,53 @@
+/*
+ * Lectern's design system for HTML documents. Linked by the service worker
+ * into documents that opt in with `<meta name="lectern-theme" content="on">`
+ * (ADR 0012), served as `/lectern-doc.css`.
+ *
+ * Same tokens and components as the app. The one difference: the app picks
+ * the dark theme with `data-theme`; a document follows the `color-scheme` of
+ * its frame, which Lectern sets from the theme, so it uses the media query.
+ * `src/styles/doc.test.ts` keeps the dark values equal to tokens.css.
+ */
+@import "../../design/tokens.css";
+@import "../../design/components/bundle.css";
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #161412;
+    --paper-sunken: #100e0d;
+    --paper-raised: #1f1c19;
+    --code-ground: #2a2622;
+    --ink: #e9e4dc;
+    --ink-muted: #a89f94;
+    --rule: #2e2a26;
+    --rule-strong: #6f675e;
+    --accent: #8fa8e0;
+    --on-accent: #161412;
+    --accent-soft: #232b3f;
+    --focus: var(--accent);
+    --highlight: #4a3f14;
+    --warn: #e3b04b;
+    --danger: #f0958b;
+    --ok: #7cc9a0;
+    --syn-keyword: #c79be0;
+    --syn-string: #8fd0a8;
+    --syn-number: #e8a66b;
+    --syn-comment: #9a9288;
+    --syn-function: #8fa8e0;
+    --syn-type: #e3b04b;
+    --syn-punct: #a89f94;
+    --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+html {
+  background: var(--paper);
+}
+
+/* A page that is itself the prose: <body class="lc-prose"> */
+body.lc-prose {
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+  box-sizing: content-box;
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>API reference</title>
+    <link rel="stylesheet" href="api.css" />
+  </head>
+  <body>
+    <header>
+      <h1>API reference</h1>
+      <p>A generated HTML document, shown as authored, in a sandbox.</p>
+    </header>
+    <main>
+      <h2 id="open"><code>open(folder)</code></h2>
+      <p>Opens a folder in read-only mode.</p>
+      <img
+        src="diagram.svg"
+        alt="Folder, service worker and sandboxed frame"
+        width="320"
+        height="120"
+      />
+      <h2 id="theme">Theme</h2>
+      <p>This page has its own styles, including a dark variant when your system prefers dark.</p>
+      <p>
+        <button id="toggle" type="button">Toggle highlight</button>
+        <span id="state">Scripts are off.</span>
+      </p>
+      <p>
+        <a href="../guide/privacy.md">Read about privacy</a> ·
+        <a href="../README.md">Back to the welcome page</a>
+      </p>
+    </main>
+    <script>
+      const state = document.getElementById("state");
+      state.textContent = "Scripts are on, in a sandbox.";
+      document
+        .getElementById("toggle")
+        .addEventListener("click", () => document.body.classList.toggle("highlight"));
+    </script>
+  </body>
+</html>

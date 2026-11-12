@@ -1,0 +1,52 @@
+body {
+  font:
+    16px/1.6 system-ui,
+    sans-serif;
+  margin: 0;
+  color: #1d2433;
+  background: #ffffff;
+}
+header {
+  padding: 24px 32px;
+  background: #eef2fb;
+  border-bottom: 1px solid #d5dcef;
+}
+main {
+  padding: 8px 32px 32px;
+  max-width: 46rem;
+}
+h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+code {
+  font-family: ui-monospace, monospace;
+  background: #eef2fb;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+a {
+  color: #2f4b8a;
+}
+body.highlight main {
+  background: #fff8d6;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #e6e9f2;
+    background: #151821;
+  }
+  header {
+    background: #1e2433;
+    border-color: #2c3447;
+  }
+  code {
+    background: #1e2433;
+  }
+  a {
+    color: #8fa8e0;
+  }
+  body.highlight main {
+    background: #3a3417;
+  }
+}

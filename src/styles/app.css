@@ -1,0 +1,350 @@
+/* App layout only. Colors, type and components come from the design system. */
+@import "../../design/tokens.css";
+@import "../../design/components/bundle.css";
+
+/* `--header-h` is the sticky header's height, measured by the reader. */
+html {
+  scroll-padding-top: var(--header-h, 0px);
+}
+
+/* Keyboard focus stops short of the update notice, which floats over the page's end. */
+html:has(.lc-toast) {
+  scroll-padding-bottom: calc(var(--space-8) * 3);
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 14px/20px var(--font-sans);
+}
+
+.app-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* An HTML document fills the window and scrolls inside its frame. */
+.app-screen--fixed {
+  height: 100vh;
+  min-height: 0;
+}
+
+.app-screen--fixed .app-reader {
+  align-items: stretch;
+  min-height: 0;
+}
+
+.app-screen__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+}
+
+.app-screen__header--ruled {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.app-screen__center {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+/* Enough to read what is typed: below that, the controls take a second line. */
+.app-search {
+  flex: 1 1 200px;
+  min-width: calc(var(--space-8) * 2);
+  max-width: 520px;
+}
+
+/* Without a width, the input's intrinsic size keeps the field from shrinking. */
+.app-search .lc-search__field input {
+  width: 0;
+}
+
+.app-spacer {
+  flex: 1 1 auto;
+}
+
+.app-path {
+  font: 400 12px/16px var(--font-mono);
+  color: var(--ink-muted);
+}
+
+.lc-folders-menu > .lc-btn .app-path {
+  display: block;
+  max-width: 24ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-muted {
+  color: var(--ink-muted);
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.app-unsupported {
+  width: 100%;
+  max-width: var(--measure);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.app-serif {
+  font-family: var(--font-serif);
+}
+
+.app-notice {
+  width: 100%;
+  max-width: 460px;
+}
+
+.app-notice .lc-notice {
+  max-width: none;
+}
+
+.app-reader {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+}
+
+.app-reader__tree {
+  flex: none;
+  position: sticky;
+  top: var(--header-h, 0px);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - var(--header-h, 0px));
+  box-sizing: border-box;
+  padding: var(--space-5) 0 var(--space-5) var(--space-5);
+}
+
+.app-reader__status {
+  padding: var(--space-3) var(--space-2);
+}
+
+.app-reader__foot {
+  margin: var(--space-4) var(--space-2) 0;
+}
+
+.app-reader__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--space-7) var(--space-7) var(--space-8);
+  outline: none;
+}
+
+.app-reader__main--frame {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+}
+
+.app-reader__article {
+  margin: 0 auto;
+}
+
+.app-reader__toc {
+  flex: 0 0 var(--toc);
+  position: sticky;
+  top: var(--header-h, 0px);
+  max-height: calc(100dvh - var(--header-h, 0px));
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: var(--space-7) var(--space-5) var(--space-5) 0;
+  background: var(--paper);
+}
+
+@media (max-width: 1200px) {
+  .app-reader__toc {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .app-reader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Stacked above the document: a bounded panel that scrolls inside its frame. */
+  .app-reader__tree {
+    position: static;
+    max-height: 45dvh;
+    padding: var(--space-4);
+  }
+
+  .app-reader__tree .lc-tree {
+    width: 100%;
+  }
+
+  .app-reader__tree .lc-splitter,
+  .app-width,
+  .app-tree-width {
+    display: none;
+  }
+
+  .app-reader__main {
+    padding: var(--space-5) var(--space-4) var(--space-7);
+  }
+
+  /* Stacked under the tree, an HTML document needs the page to scroll, and a height of its own. */
+  .app-screen--fixed {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .app-reader__main--frame .lc-frame__sheet {
+    flex: none;
+    height: 80dvh;
+  }
+}
+
+/* Narrow windows: the reader's header on one line, so the sticky part stays small. */
+@media (max-width: 800px) {
+  .app-screen__header--ruled {
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .app-screen__header--ruled .app-spacer {
+    display: none;
+  }
+
+  .app-screen__header--ruled .app-search {
+    flex: 1 1 0;
+  }
+
+  /* Results span the header, not the narrow field. */
+  .app-screen__header--ruled .lc-search,
+  .app-screen__header--ruled .lc-folders-menu {
+    position: static;
+  }
+
+  /* From the header's edge: under its button, the panel would start off screen. */
+  .app-screen__header--ruled .lc-folders-panel {
+    right: var(--space-4);
+  }
+
+  .app-screen__header--ruled .lc-search__results {
+    left: var(--space-2);
+    right: var(--space-2);
+  }
+
+  /* Mark and folder icon only; the words stay for assistive technology. */
+  .app-screen__header--ruled .lc-logo__name,
+  .app-screen__header--ruled .lc-folders-menu .app-path {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .app-screen__header--ruled .lc-folders-menu > .lc-btn {
+    padding: 7px;
+  }
+}
+
+/* The narrowest windows: room for the words typed, rather than the shortcut hint. */
+@media (max-width: 400px) {
+  .app-screen__header--ruled .lc-search__kbd {
+    display: none;
+  }
+}
+
+/* Short windows, as at 400 % zoom: the header scrolls away and leaves the page to the document. */
+@media (max-height: 400px) {
+  html {
+    scroll-padding-top: 0;
+  }
+
+  .app-screen__header--ruled {
+    position: relative;
+  }
+
+  .app-reader__tree,
+  .app-reader__toc {
+    top: 0;
+    max-height: 100dvh;
+  }
+}
+
+/* Reading width: the column follows the reader's choice. */
+[data-width="wide"] .app-reader__article {
+  max-width: var(--measure-wide);
+}
+
+[data-width="full"] .app-reader__article {
+  max-width: none;
+}
+
+.app-menu {
+  position: relative;
+}
+
+/* A popover in the sticky header cannot be scrolled to: it scrolls inside itself. */
+.app-screen__header--ruled .lc-menu,
+.app-screen__header--ruled .lc-folders-panel {
+  max-height: calc(100dvh - var(--header-h, 0px) - var(--space-5));
+  overflow-y: auto;
+}
+
+/* Zen: the document alone. */
+[data-zen] .app-screen__header,
+[data-zen] .app-reader__tree,
+[data-zen] .app-reader__toc {
+  display: none;
+}
+
+.app-zen-exit {
+  position: fixed;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 20;
+  color: var(--ink-muted);
+  background: var(--paper);
+  /* Quiet, yet above the 3:1 an icon-only control needs. */
+  opacity: 0.7;
+}
+
+.app-zen-exit:hover,
+.app-zen-exit:focus-visible {
+  opacity: 1;
+}
+
+.app-tree-spacer {
+  width: var(--space-4);
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

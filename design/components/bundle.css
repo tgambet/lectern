@@ -1,0 +1,246 @@
+/* Lectern components: plain CSS, no framework. Every value comes from tokens.css. */
+
+/* Base: native controls and scrollbars follow the theme */
+:root, [data-theme="light"] { color-scheme: light; scrollbar-color: var(--rule-strong) transparent; }
+[data-theme="dark"] { color-scheme: dark; scrollbar-color: var(--rule-strong) transparent; }
+* { scrollbar-width: thin; }
+
+.lc-stage { background: var(--paper); color: var(--ink); padding: var(--space-5); font: 400 14px/20px var(--font-sans); box-sizing: border-box; }
+.lc-ic { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.lc-label { font: 500 12px/16px var(--font-sans); letter-spacing: 0.02em; color: var(--ink-muted); margin: 0 0 var(--space-2); }
+
+/* Button */
+.lc-btn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 7px var(--space-3); border: 1px solid var(--rule-strong); border-radius: var(--radius-md); background: transparent; color: var(--ink); font: 500 14px/20px var(--font-sans); cursor: pointer; text-decoration: none; }
+.lc-btn:hover { background: var(--paper-sunken); }
+.lc-btn:focus-visible, .lc-btn.is-focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lc-btn--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.lc-btn--primary:hover { background: var(--accent); filter: brightness(1.08); }
+.lc-btn--ghost { border-color: transparent; }
+.lc-btn--icon { padding: 7px; }
+.lc-btn[disabled] { opacity: 0.45; cursor: default; }
+.lc-btn[disabled]:hover { background: transparent; filter: none; }
+
+/* File tree */
+.lc-tree { position: relative; box-sizing: border-box; display: flex; flex-direction: column; min-height: 0; width: var(--sidebar); max-width: 100%; background: var(--paper-sunken); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--ink); }
+.lc-tree__title { font: 500 12px/16px var(--font-sans); letter-spacing: 0.02em; color: var(--ink-muted); padding: var(--space-1) var(--space-2) var(--space-2); margin: 0; }
+.lc-tree__head { display: flex; align-items: center; gap: var(--space-1); }
+.lc-tree__head .lc-tree__title { flex: 1 1 auto; min-width: 0; padding-bottom: var(--space-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lc-tree__menu { position: relative; flex: none; }
+.lc-tree__menu > .lc-btn { padding: var(--space-1); color: var(--ink-muted); }
+.lc-tree__menu > .lc-btn:hover { background: var(--paper-raised); color: var(--ink); }
+.lc-tree__filter { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-1) var(--space-1) var(--space-2); padding: 3px var(--space-2); background: var(--paper-raised); border: 1px solid var(--rule-strong); border-radius: var(--radius-md); color: var(--ink-muted); }
+.lc-tree__filter:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lc-tree__filter input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 400 13px/20px var(--font-sans); }
+.lc-tree__filter input::placeholder { color: var(--ink-muted); opacity: 1; }
+.lc-tree__empty { margin: 0; padding: var(--space-2); font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+.lc-tree__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lc-tree__label--path { display: flex; }
+.lc-tree__dir { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--ink-muted); }
+.lc-tree__base { flex: none; }
+.lc-tree mark { background: var(--highlight); color: var(--ink); border-radius: var(--radius-sm); text-decoration: underline; text-underline-offset: 2px; }
+.lc-tree ul { list-style: none; margin: 0; padding: 0; }
+.lc-tree__list { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.lc-tree__item { display: flex; align-items: center; gap: var(--space-2); padding: 5px var(--space-2); padding-left: calc(var(--space-2) - 2px + var(--depth, 0) * 16px); border-left: 2px solid transparent; border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lc-tree__item:hover { background: var(--paper-raised); }
+.lc-tree__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.lc-tree__item[aria-current="page"] { background: var(--accent-soft); border-left-color: var(--accent); font-weight: 500; }
+.lc-tree__item .lc-ic { color: var(--ink-muted); }
+.lc-tree__item[aria-current="page"] .lc-ic { color: var(--accent); }
+.lc-tree__chev { transition: none; }
+.lc-tree__chev[data-open] { transform: rotate(90deg); }
+
+/* Menu: a small popover of actions under its trigger */
+.lc-menu { position: absolute; z-index: 10; top: 100%; right: 0; box-sizing: border-box; min-width: 200px; margin-top: var(--space-1); padding: var(--space-1); background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); box-shadow: var(--shadow-popover); }
+.lc-menu .lc-btn { width: 100%; justify-content: flex-start; border-color: transparent; font-weight: 400; }
+.lc-menu .lc-btn[aria-pressed="true"] { font-weight: 500; }
+.lc-menu .lc-btn[aria-pressed="true"] .lc-ic { color: var(--accent); }
+.lc-menu__label { padding: var(--space-1) var(--space-3) 0; margin: 0 0 var(--space-1); }
+.lc-menu__mark { width: 16px; flex: none; }
+.lc-menu__sep { margin: var(--space-1) var(--space-2); border: 0; border-top: 1px solid var(--rule); }
+
+/* Splitter: resizes the region to its left; a hairline shows on hover, drag and focus */
+.lc-splitter { position: absolute; top: 0; bottom: 0; right: calc(-1 * var(--space-4)); width: var(--space-5); cursor: col-resize; touch-action: none; outline: none; }
+.lc-splitter::after { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 1px); width: 2px; border-radius: var(--radius-pill); background: transparent; }
+.lc-splitter:hover::after, .lc-splitter[data-dragging]::after { background: var(--rule-strong); }
+.lc-splitter:focus-visible::after { background: var(--focus); }
+
+/* Prose: a rendered document */
+.lc-prose { max-width: var(--measure); font: 400 17px/28px var(--font-serif); color: var(--ink); overflow-wrap: break-word; }
+.lc-prose > :first-child { margin-top: 0; }
+.lc-prose h1 { font: 600 34px/40px var(--font-serif); margin: 0 0 var(--space-4); }
+.lc-prose h2 { font: 600 25px/32px var(--font-serif); margin: var(--space-6) 0 var(--space-3); }
+.lc-prose h3 { font: 600 19px/28px var(--font-serif); margin: var(--space-5) 0 var(--space-2); }
+.lc-prose p { margin: 0 0 var(--space-4); }
+.lc-prose .lc-lede { font-size: 19px; line-height: 30px; }
+.lc-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.lc-prose a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+.lc-prose ul, .lc-prose ol { margin: 0 0 var(--space-4); padding-left: var(--space-5); }
+.lc-prose li { margin: 0 0 var(--space-1); }
+.lc-prose code { font: 400 0.9em/1.4 var(--font-mono); background: var(--code-ground); padding: 1px 5px; border-radius: var(--radius-sm); }
+.lc-prose blockquote { margin: 0 0 var(--space-4); padding: 0 0 0 var(--space-5); font-style: italic; color: var(--ink-muted); }
+.lc-prose table { width: 100%; border-collapse: collapse; margin: 0 0 var(--space-4); font: 400 15px/22px var(--font-serif); }
+.lc-table-scroll { overflow-x: auto; }
+.lc-table-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+.lc-prose th { text-align: left; font: 600 14px/20px var(--font-sans); padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: 1px solid var(--rule-strong); }
+.lc-prose td { padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: 1px solid var(--rule); }
+.lc-prose hr { border: 0; border-top: 1px solid var(--rule); margin: var(--space-6) 0; }
+
+/* Code block */
+.lc-code { background: var(--paper-sunken); border: 1px solid var(--rule); border-radius: var(--radius-md); color: var(--ink); overflow: hidden; }
+.lc-code__bar { display: flex; align-items: center; justify-content: space-between; padding: var(--space-1) var(--space-2) var(--space-1) var(--space-3); border-bottom: 1px solid var(--rule); }
+.lc-code__lang { font: 500 12px/16px var(--font-mono); color: var(--ink-muted); }
+.lc-code pre { margin: 0; padding: var(--space-3) var(--space-4); overflow-x: auto; font: 400 14px/22px var(--font-mono); }
+.lc-code pre:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.lc-code pre code, .lc-prose pre code { padding: 0; background: none; border-radius: 0; font: inherit; }
+.lc-code .lc-btn { padding: 3px var(--space-2); font-size: 12px; line-height: 16px; }
+.tk-kw { color: var(--syn-keyword); }
+.tk-str { color: var(--syn-string); }
+.tk-num { color: var(--syn-number); }
+.tk-cm { color: var(--syn-comment); font-style: italic; }
+.tk-fn { color: var(--syn-function); }
+.tk-ty { color: var(--syn-type); }
+.tk-p { color: var(--syn-punct); }
+
+/* Search */
+.lc-search { position: relative; max-width: 440px; font: 400 14px/20px var(--font-sans); }
+.lc-search__field { display: flex; align-items: center; gap: var(--space-2); padding: 7px var(--space-3); background: var(--paper-raised); border: 1px solid var(--rule-strong); border-radius: var(--radius-md); color: var(--ink-muted); }
+.lc-search__field:focus-within, .lc-search__field.is-focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lc-search__field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; }
+.lc-search__field input::placeholder { color: var(--ink-muted); opacity: 1; }
+.lc-search__kbd { font: 500 12px/16px var(--font-mono); color: var(--ink-muted); border: 1px solid var(--rule-strong); border-radius: var(--radius-sm); padding: 0 5px; }
+.lc-search__results { list-style: none; margin: var(--space-2) 0 0; padding: var(--space-1); background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); box-shadow: var(--shadow-popover); }
+.lc-search__result { display: block; padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; }
+.lc-search__result[aria-selected="true"] { background: var(--accent-soft); outline: 2px solid var(--focus); outline-offset: -2px; }
+.lc-search__title { font: 500 14px/20px var(--font-sans); }
+.lc-search__path { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.lc-search__snippet { margin: var(--space-1) 0 0; font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+.lc-search__results { position: absolute; left: 0; right: 0; top: 100%; z-index: 10; max-height: min(70vh, 560px); overflow-y: auto; }
+.lc-search__empty, .lc-search__status { padding: var(--space-2) var(--space-3); font: 400 13px/20px var(--font-sans); color: var(--ink-muted); margin: 0; }
+.lc-search__status { border-top: 1px solid var(--rule); }
+.lc-search mark { background: var(--highlight); color: var(--ink); border-radius: var(--radius-sm); padding: 0 1px; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Resume card */
+.lc-resume { box-sizing: border-box; max-width: min(420px, 100%); overflow-wrap: break-word; margin: 0 auto; padding: var(--space-6) var(--space-6) var(--space-5); background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); text-align: center; }
+.lc-resume__mark { width: 56px; height: 56px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.lc-resume__name { font: 600 28px/34px var(--font-serif); margin: var(--space-3) 0 0; }
+.lc-resume__title { font: 600 18px/26px var(--font-sans); margin: var(--space-4) 0 var(--space-1); }
+.lc-resume__meta { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); margin: 0 0 var(--space-5); }
+.lc-resume__actions { display: flex; flex-direction: column; gap: var(--space-2); align-items: stretch; }
+.lc-resume__actions .lc-btn { justify-content: center; }
+.lc-resume__note { font: 400 12px/16px var(--font-sans); color: var(--ink-muted); margin: var(--space-4) 0 0; }
+
+/* Notice */
+.lc-notice { box-sizing: border-box; overflow-wrap: break-word; max-width: 520px; padding: var(--space-3) var(--space-4); background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); font: 400 14px/20px var(--font-sans); color: var(--ink); }
+.lc-notice + .lc-notice { margin-top: var(--space-3); }
+.lc-notice__head { display: flex; align-items: center; gap: var(--space-2); font: 600 12px/16px var(--font-sans); letter-spacing: 0.02em; margin: 0 0 var(--space-1); }
+.lc-notice--info .lc-notice__head { color: var(--accent); }
+.lc-notice--warn .lc-notice__head { color: var(--warn); }
+.lc-notice--danger .lc-notice__head { color: var(--danger); }
+.lc-notice p { margin: 0; }
+.lc-notice code { font: 400 0.9em/1.4 var(--font-mono); background: var(--code-ground); padding: 1px 5px; border-radius: var(--radius-sm); }
+
+/* Logo: the active brand's artwork, one image per theme */
+.lc-logo { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.lc-logo__mark { width: 28px; height: 28px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.lc-logo__name { font: 600 20px/24px var(--font-serif); }
+
+/* Resume card, first run: no folder opened yet */
+.lc-resume__lede { font: 400 15px/24px var(--font-serif); color: var(--ink-muted); margin: 0 0 var(--space-5); }
+
+/* Prose: what real repositories contain */
+.lc-prose h4, .lc-prose h5, .lc-prose h6 { font: 600 17px/28px var(--font-serif); margin: var(--space-5) 0 var(--space-2); }
+.lc-prose img { max-width: 100%; height: auto; }
+.lc-prose pre { margin: 0; }
+.lc-prose .lc-code { margin: 0 0 var(--space-4); }
+/* GitHub alerts in a document: a full-width notice whose body keeps the reading type */
+.lc-prose .lc-notice { max-width: none; margin: 0 0 var(--space-4); font: inherit; }
+.lc-prose .lc-notice > * + * { margin-top: var(--space-2); }
+.lc-prose .lc-notice ul, .lc-prose .lc-notice ol { margin-bottom: 0; }
+.lc-prose kbd { font: 500 0.8em/1 var(--font-mono); border: 1px solid var(--rule-strong); border-bottom-width: 2px; border-radius: var(--radius-sm); padding: 2px 5px; background: var(--paper-raised); }
+.lc-prose mark { background: var(--highlight); color: var(--ink); }
+.lc-prose details { margin: 0 0 var(--space-4); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); }
+.lc-prose summary { font: 500 14px/20px var(--font-sans); cursor: pointer; }
+.lc-prose summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+.lc-prose .contains-task-list { list-style: none; padding-left: var(--space-2); }
+.lc-prose .task-list-item input { margin: 0 var(--space-2) 0 0; accent-color: var(--accent); }
+.lc-prose .footnotes { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--rule); font-size: 15px; line-height: 24px; color: var(--ink-muted); }
+.lc-prose .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.lc-prose a.lc-broken { color: var(--danger); text-decoration-style: dashed; cursor: help; }
+.lc-prose a.lc-broken::after { content: " (missing)"; font: 400 12px/16px var(--font-sans); }
+.lc-prose img.lc-broken { display: none; }
+.lc-prose .lc-remote-img { display: inline-block; font: 400 12px/16px var(--font-sans); color: var(--ink-muted); border: 1px dashed var(--rule-strong); border-radius: var(--radius-sm); padding: 1px 6px; }
+
+/* Table of contents */
+.lc-toc { font: 400 13px/20px var(--font-sans); }
+.lc-toc ul { list-style: none; margin: 0; padding: 0; }
+.lc-toc li { padding: var(--space-1) 0; }
+.lc-toc__link { color: var(--ink-muted); text-decoration: none; border-radius: var(--radius-sm); }
+.lc-toc__link:hover { color: var(--ink); }
+.lc-toc__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lc-toc__link[aria-current="true"] { color: var(--accent); font-weight: 500; }
+.lc-toc__item--3 { padding-left: var(--space-3); }
+
+/* Notice actions */
+.lc-notice__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.lc-notice__actions .lc-btn { padding: 3px var(--space-3); font-size: 13px; }
+
+/* Frame: an HTML document from the folder, on its own sheet */
+.lc-frame { display: flex; flex-direction: column; gap: var(--space-3); min-height: 0; height: 100%; }
+.lc-frame .lc-notice { max-width: none; }
+.lc-frame__sheet { flex: 1 1 auto; min-height: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-lg); overflow: hidden; }
+.lc-frame__sheet iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+/* Toast: a notice floating above the page (updates) */
+.lc-toast { position: fixed; right: var(--space-5); bottom: var(--space-5); z-index: 20; max-width: min(420px, calc(100vw - 2 * var(--space-5))); }
+.lc-toast .lc-notice { box-shadow: var(--shadow-popover); }
+
+/* Skip link: first focusable element, visible only when focused */
+.lc-skip { position: absolute; left: var(--space-3); top: var(--space-3); z-index: 30; transform: translateY(-200%); }
+.lc-skip:focus-visible, .lc-skip:focus { transform: none; }
+.lc-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Folder list: the folders Lectern already knows, on the home and resume screens and in the reader's folder menu */
+.lc-folders { box-sizing: border-box; width: 100%; max-width: 420px; margin: 0; padding: var(--space-1); list-style: none; background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); text-align: left; }
+.lc-folders__row { display: flex; align-items: center; gap: var(--space-1); border-radius: var(--radius-md); }
+.lc-folders__row:hover { background: var(--paper-sunken); }
+.lc-folders__open { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding: var(--space-2) var(--space-3); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--ink); font: 500 14px/20px var(--font-sans); text-align: left; cursor: pointer; }
+.lc-folders__open:focus-visible, .lc-folders__forget:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.lc-folders__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lc-folders__meta { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.lc-folders__open[aria-current="true"] .lc-folders__name { color: var(--accent); }
+.lc-folders__forget { flex: none; margin-right: var(--space-1); padding: var(--space-1) var(--space-2); border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink-muted); font: 400 12px/16px var(--font-sans); cursor: pointer; }
+.lc-folders__forget:hover { color: var(--ink); text-decoration: underline; }
+.lc-folders--flat { max-width: none; padding: 0; border: 0; background: transparent; }
+.lc-folders-panel { position: absolute; z-index: 10; top: 100%; right: 0; box-sizing: border-box; width: 320px; max-width: calc(100vw - 2 * var(--space-4)); margin-top: var(--space-2); padding: var(--space-1); background: var(--paper-raised); border: 1px solid var(--rule); border-radius: var(--radius-lg); box-shadow: var(--shadow-popover); }
+.lc-folders-panel .lc-btn { width: 100%; justify-content: flex-start; border-color: transparent; }
+.lc-folders__sep { margin: var(--space-1) var(--space-2); border: 0; border-top: 1px solid var(--rule); }
+.lc-folders-menu { position: relative; }
+
+/* Dialog */
+.lc-dialog { box-sizing: border-box; width: min(560px, calc(100vw - 2 * var(--space-4))); max-height: min(80dvh, 720px); padding: 0; overflow-y: auto; background: var(--paper-raised); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius-lg); box-shadow: var(--shadow-popover); font: 400 14px/20px var(--font-sans); }
+.lc-dialog::backdrop { background: color-mix(in srgb, var(--paper) 75%, transparent); }
+.lc-dialog__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-3) var(--space-2) var(--space-5); }
+.lc-dialog__title { margin: 0; font: 600 16px/24px var(--font-sans); }
+.lc-dialog__body { padding: 0 var(--space-5) var(--space-5); }
+.lc-dialog__quote { margin: 0 0 var(--space-4); padding-left: var(--space-3); border-left: 1px solid var(--rule-strong); color: var(--ink-muted); font: italic 400 15px/22px var(--font-serif); max-height: 8em; overflow-y: auto; }
+.lc-dialog__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.lc-dialog__end { margin-left: auto; }
+.lc-field-label { display: block; }
+.lc-field { display: block; box-sizing: border-box; width: 100%; padding: var(--space-2) var(--space-3); background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: var(--radius-md); font: 400 14px/20px var(--font-sans); resize: vertical; }
+.lc-field:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Bookmarks and notes */
+.lc-marks { list-style: none; margin: 0 0 var(--space-5); padding: 0; }
+.lc-marks__item { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); padding: var(--space-2) 0; border-bottom: 1px solid var(--rule); }
+.lc-marks__main { min-width: 0; }
+.lc-marks__main a { color: var(--accent); }
+.lc-marks__main a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+.lc-marks__quote { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.lc-marks__text { margin: var(--space-1) 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.lc-marks__path { display: block; margin-top: var(--space-1); color: var(--ink-muted); font: 400 12px/16px var(--font-mono); overflow-wrap: anywhere; }
+.lc-marks__gone { margin: var(--space-1) 0 0; color: var(--warn); }
+.lc-marks__empty { margin: 0 0 var(--space-5); color: var(--ink-muted); }
+.lc-prose mark.lc-note { background: var(--accent-soft); color: var(--ink); border-bottom: 1px solid var(--accent); }
+.lc-note-ref { min-width: 16px; margin: 0 1px; padding: 0 3px; background: none; border: 0; border-radius: var(--radius-sm); color: var(--accent); font: 600 12px/16px var(--font-sans); vertical-align: super; cursor: pointer; scroll-margin-top: calc(var(--header-h, 0px) + var(--space-6)); }
+.lc-note-ref:hover { background: var(--accent-soft); }
+.lc-note-ref:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }

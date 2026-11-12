@@ -1,0 +1,24 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}svg{display:block}
+.g{fill:var(--paper)}.a{fill:var(--accent)}.i{fill:var(--ink)}.m{fill:var(--ink-muted)}.h{fill:var(--highlight)}
+.b{rx:var(--radius-sm)}.cut{stroke:var(--paper);stroke-width:3;fill:none}
+.name{font:600 108px/1 var(--font-serif);fill:var(--ink);letter-spacing:-0.01em}.tag{font:400 13px/16px var(--font-sans);fill:var(--ink-muted)}</style></head>
+<body>
+<svg width="960" height="288" viewBox="0 0 960 288" role="img" aria-label="Lectern">
+<!-- blocks: accent 192x176 (bleeds top), ink 144x192, ink-muted 192x48, highlight 104x112 (bleeds right); sides are multiples of space-1 (4px).
+     arrangement: a staggered stack, accent slab and ink block overlapping in height, grey strip under the slab, highlight flush to the right edge.
+     pattern: six slanted hairlines at the lectern desk's slope (-0.3) at a 48px pitch (space-7), cut from the blocks in the ground color: editorial rules that echo the mark's desk.
+     scales: radius-sm on every block; text block 440px max on the left, nothing but the name and tagline there. -->
+<rect class="g" width="960" height="288"/>
+<rect class="a b" x="496" y="0" width="192" height="176"/>
+<rect class="i b" x="704" y="48" width="144" height="192"/>
+<rect class="m b" x="496" y="192" width="192" height="48"/>
+<rect class="h b" x="856" y="112" width="104" height="112"/>
+<defs><clipPath id="c"><rect x="480" y="0" width="480" height="288"/></clipPath></defs>
+<g class="cut" clip-path="url(#c)"><line x1="480" y1="120" x2="960" y2="-24.0"/><line x1="480" y1="168" x2="960" y2="24.0"/><line x1="480" y1="216" x2="960" y2="72.0"/><line x1="480" y1="264" x2="960" y2="120.0"/><line x1="480" y1="312" x2="960" y2="168.0"/><line x1="480" y1="360" x2="960" y2="216.0"/></g>
+<text class="name" x="32" y="204">Lectern</text>
+<text class="tag" x="36" y="238">Your docs, read where they live.</text>
+</svg>
+</body></html>

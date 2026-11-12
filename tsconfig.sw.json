@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.sw.tsbuildinfo",
+    "lib": ["ES2023", "WebWorker"],
+    "types": []
+  },
+  "include": [
+    "src/sw",
+    "src/fs/errors.ts",
+    "src/fs/path.ts",
+    "src/fs/virtual-fs.ts",
+    "src/fs/mime.ts",
+    "src/fs/file-system-access-fs.ts",
+    "src/fs/file-system-access.d.ts",
+    "src/storage/db.ts",
+    "src/html/rewrite.ts",
+    "src/search/store.ts"
+  ],
+  "exclude": ["src/**/*.test.ts"]
+}

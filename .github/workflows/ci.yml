@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      # setup-vp v1.9.0, pinned by commit.
+      - uses: voidzero-dev/setup-vp@56918a6d0c629c55ae8b88826a7d47fda85769ee
+        with:
+          node-version-file: .node-version
+          cache: true
+
+      - name: Check (format, lint, types)
+        run: vp check
+
+      - name: Unit tests
+        run: vp test
+
+      - name: Build
+        run: vp build
+
+      - name: Bundle size
+        run: node scripts/bundle-size.ts
+
+      - name: Install Chromium for e2e
+        run: vp exec playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: vp exec playwright test

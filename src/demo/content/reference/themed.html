@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A document in Lectern's theme</title>
+    <meta name="lectern-theme" content="on" />
+  </head>
+  <body class="lc-prose">
+    <h1>A document in Lectern's theme</h1>
+    <p class="lc-lede">
+      This page is plain HTML with no stylesheet of its own. One line in its head asks Lectern for
+      its design system, so it reads like the rest of the folder, in light and dark.
+    </p>
+
+    <h2 id="opt-in">Opting in</h2>
+    <p>
+      Add the <code>meta</code> tag, and put <code>lc-prose</code> on the body or on an element.
+    </p>
+    <div class="lc-code">
+      <pre><code>&lt;meta name="lectern-theme" content="on"&gt;
+&lt;body class="lc-prose"&gt;</code></pre>
+    </div>
+    <div class="lc-notice lc-notice--info" role="note">
+      <p class="lc-notice__head">Note</p>
+      <p>
+        Opened outside Lectern, this page is unstyled but still readable: the markup is ordinary
+        HTML. Your own styles, if any, win over the theme.
+      </p>
+    </div>
+
+    <h2 id="what-you-get">What you get</h2>
+    <p>
+      Headings, links, lists, <kbd>Ctrl</kbd> + <kbd>K</kbd>, <mark>marks</mark> and inline
+      <code>code</code> come from the same tokens as the app.
+    </p>
+    <ul>
+      <li>Paper, ink and a single accent</li>
+      <li>Literata for reading, JetBrains Mono for code</li>
+      <li>A dark theme that follows Lectern's toggle</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>lc-prose</code></td>
+          <td>Reading column and type</td>
+        </tr>
+        <tr>
+          <td><code>lc-lede</code></td>
+          <td>Opening paragraph</td>
+        </tr>
+        <tr>
+          <td><code>lc-notice</code></td>
+          <td>Note, warning or danger box</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="lc-notice lc-notice--warn" role="note">
+      <p class="lc-notice__head">Warning</p>
+      <p>Scripts mode keeps the page's own look: its policy only allows inline styles.</p>
+    </div>
+
+    <details>
+      <summary>More details</summary>
+      <p>Native elements such as <code>details</code> are dressed by the theme.</p>
+    </details>
+
+    <p>
+      <a href="../guide/reading.md">What Markdown looks like</a> ·
+      <a href="api.html">A page with its own styles</a>
+    </p>
+  </body>
+</html>

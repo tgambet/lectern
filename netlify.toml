@@ -1,0 +1,33 @@
+# Hosting on Netlify: https://lectern.creasource.app/
+[build]
+command = "pnpm vp build"
+publish = "dist"
+
+# Single-page app: unknown paths (deep links such as /read/...) serve the shell.
+# Without `force`, real files in dist/ (assets, sw.js, manifest) are served first.
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# The service worker and the manifest must always be revalidated, or updates stall.
+[[headers]]
+for = "/sw.js"
+[headers.values]
+Cache-Control = "no-cache"
+
+[[headers]]
+for = "/manifest.webmanifest"
+[headers.values]
+Cache-Control = "no-cache"
+
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
